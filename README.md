@@ -114,7 +114,7 @@ If you want to train your own object detector, delete the following files (do no
 -	All files in \object_detection\inference_graph
 
 Now, you are ready to start from scratch in training your own object detector. This tutorial will assume that all the files listed above were deleted, and will go on to explain how to generate the files for your own training dataset.
-# 步驟七、於Anaconda 建好的虛擬環境。安裝tensorflow及其他包，全部從選單安裝，不必如作者所述用指令。先裝最新版tensorflow(或作者建議的1.13 版)，裝好後，再裝這幾個：pillow、 lxml、Cython、contextlib2、jupyter、matplotlib、pandas。不用裝 protobuf 可能會導致ERROR，因為裝tensorflow時就會自動裝了
+# 步驟七、於Anaconda 建好的虛擬環境。安裝tensorflow及其他包，全部從選單安裝，不必如作者所述用指令。先裝最新版tensorflow(或作者建議的1.13 版)，裝好後，再裝這幾個：pillow、 lxml、Cython、contextlib2、jupyter、matplotlib、pandas。不用裝 protobuf 可能會導致ERROR，因為裝tensorflow時就會自動裝了。安裝好後再確認tensorflow 是否有被降版，要在1.13上，不然後面會有錯誤
 #### 2d. Set up new Anaconda virtual environment
 Next, we'll work on setting up a virtual environment in Anaconda for tensorflow-gpu. From the Start menu in Windows, search for the Anaconda Prompt utility, right click on it, and click “Run as Administrator”. If Windows asks you if you would like to allow it to make changes to your computer, click Yes.
 
@@ -166,6 +166,7 @@ In the Anaconda Command Prompt, change directories to the \models\research direc
 ```
 
 Then copy and paste the following command into the command line and press Enter:
+# 步驟八、編譯Protobufs，於termianl 下先到這個目錄：CD D:\Project\ObjectDetection\models\research 。然後貼上下面這一大大串後按enter:
 ```
 protoc --python_out=. .\object_detection\protos\anchor_generator.proto .\object_detection\protos\argmax_matcher.proto .\object_detection\protos\bipartite_matcher.proto .\object_detection\protos\box_coder.proto .\object_detection\protos\box_predictor.proto .\object_detection\protos\eval.proto .\object_detection\protos\faster_rcnn.proto .\object_detection\protos\faster_rcnn_box_coder.proto .\object_detection\protos\grid_anchor_generator.proto .\object_detection\protos\hyperparams.proto .\object_detection\protos\image_resizer.proto .\object_detection\protos\input_reader.proto .\object_detection\protos\losses.proto .\object_detection\protos\matcher.proto .\object_detection\protos\mean_stddev_box_coder.proto .\object_detection\protos\model.proto .\object_detection\protos\optimizer.proto .\object_detection\protos\pipeline.proto .\object_detection\protos\post_processing.proto .\object_detection\protos\preprocessor.proto .\object_detection\protos\region_similarity_calculator.proto .\object_detection\protos\square_box_coder.proto .\object_detection\protos\ssd.proto .\object_detection\protos\ssd_anchor_generator.proto .\object_detection\protos\string_int_label_map.proto .\object_detection\protos\train.proto .\object_detection\protos\keypoint_box_coder.proto .\object_detection\protos\multiscale_anchor_generator.proto .\object_detection\protos\graph_rewriter.proto .\object_detection\protos\calibration.proto .\object_detection\protos\flexible_grid_anchor_generator.proto
 ```
@@ -174,6 +175,7 @@ This creates a name_pb2.py file from every name.proto file in the \object_detect
 **(Note: TensorFlow occassionally adds new .proto files to the \protos folder. If you get an error saying ImportError: cannot import name 'something_something_pb2' , you may need to update the protoc command to include the new .proto files.)**
 
 Finally, run the following commands from the C:\tensorflow1\models\research directory:
+# 步驟九、貼上下面這二個指令執行
 ```
 (tensorflow1) C:\tensorflow1\models\research> python setup.py build
 (tensorflow1) C:\tensorflow1\models\research> python setup.py install
@@ -181,6 +183,8 @@ Finally, run the following commands from the C:\tensorflow1\models\research dire
 
 #### 2g. Test TensorFlow setup to verify it works
 The TensorFlow Object Detection API is now all set up to use pre-trained models for object detection, or to train a new one. You can test it out and verify your installation is working by launching the object_detection_tutorial.ipynb script with Jupyter. From the \object_detection directory, issue this command:
+# 步驟十：開啟object_detection/utils/visualization_utils.py ，註解lines 29 and 30 否則會有錯
+# 步驟十一、驗證是如都安裝好了，於termianl 視窗，於目錄\object_detection下貼上下面這二個指令執行jupyter notebook，跑裡面全部的程式碼，如果成功了，會看到框出物件的圖片
 ```
 (tensorflow1) C:\tensorflow1\models\research\object_detection> jupyter notebook object_detection_tutorial.ipynb
 ```
@@ -195,7 +199,7 @@ Once you have stepped all the way through the script, you should see two labeled
 <p align="center">
   <img src="doc/jupyter_notebook_dogs.jpg">
 </p>
-
+# 步驟十二，放入我們自己的影像資料，因為作者已經有做了，所以這邊多個步驟就先跳過去不實作，但還要是看一下才能了解是怎放影像資料的
 ### 3. Gather and Label Pictures
 Now that the TensorFlow Object Detection API is all set up and ready to go, we need to provide the images it will use to train a new detection classifier.
 
@@ -332,7 +336,6 @@ item {
   name: 'shoe'
 }
 ```
-
 #### 5b. Configure training
 Finally, the object detection training pipeline must be configured. It defines which model and what parameters will be used for training. This is the last step before running training!
 
@@ -341,6 +344,9 @@ Navigate to C:\tensorflow1\models\research\object_detection\samples\configs and 
 Make the following changes to the faster_rcnn_inception_v2_pets.config file. Note: The paths must be entered with single forward slashes (NOT backslashes), or TensorFlow will give a file path error when trying to train the model! Also, the paths must be in double quotation marks ( " ), not single quotation marks ( ' ).
 
 - Line 9. Change num_classes to the number of different objects you want the classifier to detect. For the above basketball, shirt, and shoe detector, it would be num_classes : 3 .
+
+# 步驟十三，因為我有修改實作目錄，和作者的不一樣，所以下面檔案的路徑都要修改。 D:\Project\ObjectDetection\models\research\object_detection\training\faster_rcnn_inception_v2_pets.config ，用記事本開啟。C:/tensorflow1/ 全改成D:/roject/bjectDetection/ 。 要改那幾行請看下面作者講的
+
 - Line 106. Change fine_tune_checkpoint to:
   - fine_tune_checkpoint : "C:/tensorflow1/models/research/object_detection/faster_rcnn_inception_v2_coco_2018_01_28/model.ckpt"
 
@@ -358,9 +364,21 @@ Save the file after the changes have been made. That’s it! The training job is
 
 ### 6. Run the Training
 **UPDATE 9/26/18:** 
+# 步驟十四： object_detection/legacy 下的 train.py 製到 /object_detection
 *As of version 1.9, TensorFlow has deprecated the "train.py" file and replaced it with "model_main.py" file. I haven't been able to get model_main.py to work correctly yet (I run in to errors related to pycocotools). Fortunately, the train.py file is still available in the /object_detection/legacy folder. Simply move train.py from /object_detection/legacy into the /object_detection folder and then continue following the steps below.*
 
 Here we go! From the \object_detection directory, issue the following command to begin training:
+
+
+# 步驟十六： 參考這個https://github.com/tensorflow/models/issues/3794
+檔案faster_rcnn_inception_v2_pets.config內 下面這四行要刪掉，不然會發生錯誤
+		step: 0
+            learning_rate: .0002
+          }
+          schedule {
+補充：要參考這邊的設定，這資料夾才是最新的https://github.com/tensorflow/models/tree/master/research/object_detection/samples/configs
+
+# 步驟十六： \bject_detection下輸入指令 python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config  。開始跑訓練畫面了
 ```
 python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
 ```
