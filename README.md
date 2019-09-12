@@ -199,7 +199,9 @@ Once you have stepped all the way through the script, you should see two labeled
 <p align="center">
   <img src="doc/jupyter_notebook_dogs.jpg">
 </p>
+
 # 步驟十二，放入我們自己的影像資料，因為作者已經有做了，所以這邊多個步驟就先跳過去不實作，但還要是看一下才能了解是怎放影像資料的
+
 ### 3. Gather and Label Pictures
 Now that the TensorFlow Object Detection API is all set up and ready to go, we need to provide the images it will use to train a new detection classifier.
 
