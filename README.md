@@ -80,7 +80,7 @@ Download the full TensorFlow object detection repository located at https://gith
 |Latest version      |https://github.com/tensorflow/models |
 
 This tutorial was originally done using TensorFlow v1.5 and this [GitHub commit](https://github.com/tensorflow/models/tree/079d67d9a0b3407e8d074a200780f3835413ef99) of the TensorFlow Object Detection API. If portions of this tutorial do not work, it may be necessary to install TensorFlow v1.5 and use this exact commit rather than the most up-to-date version.
-# 步驟三、下載物件偵測模組，種類很多，這邊先以 Faster-RCNN-Inception-V2-COCO model為範例。 下載整包後，解壓到專案目錄
+# 步驟四、下載物件偵測模組，種類很多，這邊先以 Faster-RCNN-Inception-V2-COCO model為範例。 至http://download.tensorflow.org/models/object_detection/faster_rcnn_inception_v2_coco_2018_01_28.tar.gz   ，下載後，解壓到專案目錄D:\Project\ObjectDetection\models\research\object_detection
 #### 2b. Download the Faster-RCNN-Inception-V2-COCO model from TensorFlow's model zoo
 TensorFlow provides several object detection models (pre-trained classifiers with specific neural network architectures) in its [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md). Some models (such as the SSD-MobileNet model) have an architecture that allows for faster detection but with less accuracy, while some models (such as the Faster-RCNN model) give slower detection but with more accuracy. I initially started with the SSD-MobileNet-V1 model, but it didn’t do a very good job identifying the cards in my images. I re-trained my detector on the Faster-RCNN-Inception-V2 model, and the detection worked considerably better, but with a noticeably slower speed.
 
@@ -91,7 +91,7 @@ TensorFlow provides several object detection models (pre-trained classifiers wit
 You can choose which model to train your objection detection classifier on. If you are planning on using the object detector on a device with low computational power (such as a smart phone or Raspberry Pi), use the SDD-MobileNet model. If you will be running your detector on a decently powered laptop or desktop PC, use one of the RCNN models. 
 
 This tutorial will use the Faster-RCNN-Inception-V2 model. [Download the model here.](http://download.tensorflow.org/models/object_detection/faster_rcnn_inception_v2_coco_2018_01_28.tar.gz) Open the downloaded faster_rcnn_inception_v2_coco_2018_01_28.tar.gz file with a file archiver such as WinZip or 7-Zip and extract the faster_rcnn_inception_v2_coco_2018_01_28 folder to the C:\tensorflow1\models\research\object_detection folder. (Note: The model date and version will likely change in the future, but it should still work with this tutorial.)
-
+# 步驟五、下載本教學範例程式碼(github 整包下載) 所有的資料放到 D:\Project\ObjectDetection\models\research\object_detection 下
 #### 2c. Download this tutorial's repository from GitHub
 Download the full repository located on this page (scroll to the top and click Clone or Download) and extract all the contents directly into the C:\tensorflow1\models\research\object_detection directory. (You can overwrite the existing "README.md" file.) This establishes a specific directory structure that will be used for the rest of the tutorial. 
 
@@ -106,7 +106,7 @@ This repository contains the images, annotation data, .csv files, and TFRecords 
 If you want to practice training your own "Pinochle Deck" card detector, you can leave all the files as they are. You can follow along with this tutorial to see how each of the files were generated, and then run the training. You will still need to generate the TFRecord files (train.record and test.record) as described in Step 4. 
 
 You can also download the frozen inference graph for my trained Pinochle Deck card detector [from this Dropbox link](https://www.dropbox.com/s/va9ob6wcucusse1/inference_graph.zip?dl=0) and extract the contents to \object_detection\inference_graph. This inference graph will work "out of the box". You can test it after all the setup instructions in Step 2a - 2f have been completed by running the Object_detection_image.py (or video or webcam) script.
-
+# 步驟六、看一下要訓練測試的影像資料放在哪邊，如下所述。
 If you want to train your own object detector, delete the following files (do not delete the folders):
 - All files in \object_detection\images\train and \object_detection\images\test
 - The “test_labels.csv” and “train_labels.csv” files in \object_detection\images
@@ -114,7 +114,7 @@ If you want to train your own object detector, delete the following files (do no
 -	All files in \object_detection\inference_graph
 
 Now, you are ready to start from scratch in training your own object detector. This tutorial will assume that all the files listed above were deleted, and will go on to explain how to generate the files for your own training dataset.
-
+# 步驟七、於Anaconda 建好的虛擬環境。安裝tensorflow及其他包，全部從選單安裝，不必如作者所述用指令。先裝最新版tensorflow(或作者建議的1.13 版)，裝好後，再裝這幾個：pillow、 lxml、Cython、contextlib2、jupyter、matplotlib、pandas。不用裝 protobuf 可能會導致ERROR，因為裝tensorflow時就會自動裝了
 #### 2d. Set up new Anaconda virtual environment
 Next, we'll work on setting up a virtual environment in Anaconda for tensorflow-gpu. From the Start menu in Windows, search for the Anaconda Prompt utility, right click on it, and click “Run as Administrator”. If Windows asks you if you would like to allow it to make changes to your computer, click Yes.
 
@@ -148,6 +148,7 @@ Install the other necessary packages by issuing the following commands:
 (tensorflow1) C:\> pip install opencv-python
 ```
 (Note: The ‘pandas’ and ‘opencv-python’ packages are not needed by TensorFlow, but they are used in the Python scripts to generate TFRecords and to work with images, videos, and webcam feeds.)
+# 步驟七、設定Anaconda 建好的虛擬環境之路徑，開該環境的terminal，輸入 C:\> set PYTHONPATH=D:\Project\ObjectDetection\models;D:\Project\ObjectDetection\models\research;D:\Project\ObjectDetection\models\research\slim  。完成後，輸入 echo %PYTHONPATH%  確認。很重要要注意，每次重開terminal，都一定要再輸入這一長串，不然後面程式執行會有問題。
 
 #### 2e. Configure PYTHONPATH environment variable
 A PYTHONPATH variable must be created that points to the \models, \models\research, and \models\research\slim directories. Do this by issuing the following commands (from any directory):
