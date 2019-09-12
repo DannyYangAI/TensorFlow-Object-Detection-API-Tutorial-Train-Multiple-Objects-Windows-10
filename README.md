@@ -372,7 +372,7 @@ Save the file after the changes have been made. That’s it! The training job is
 Here we go! From the \object_detection directory, issue the following command to begin training:
 
 
-# 步驟十六： 檔案faster_rcnn_inception_v2_pets.config內 下面這四行要刪掉，不然會發生錯誤
+# 步驟十五： 檔案faster_rcnn_inception_v2_pets.config內 下面這四行要刪掉，不然會發生錯誤
 
 		step: 0
             learning_rate: .0002
@@ -382,7 +382,7 @@ Here we go! From the \object_detection directory, issue the following command to
 補充：參考這個https://github.com/tensorflow/models/issues/3794     。要參考以下網址的設定，這資料夾才是最新的https://github.com/tensorflow/models/tree/master/research/object_detection/samples/configs
 
 
-# 步驟十六： \bject_detection下輸入指令 python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config  。開始跑訓練畫面了
+# 步驟十六： \bject_detection下輸入以下這行指令就會開始跑訓練畫面了 。
 ```
 python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
 ```
