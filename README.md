@@ -1,4 +1,4 @@
-#-使用tensorflow 物件偵測API 訓練影像 (含使用現有預訓練模組)
+# 使用tensorflow 物件偵測API 訓練影像 (含使用現有預訓練模組)
 # How To Train an Object Detection Classifier for Multiple Objects Using TensorFlow (GPU) on Windows 10
 
 ## Brief Summary
