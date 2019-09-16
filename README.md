@@ -149,6 +149,7 @@ Install the other necessary packages by issuing the following commands:
 ```
 (Note: The ‘pandas’ and ‘opencv-python’ packages are not needed by TensorFlow, but they are used in the Python scripts to generate TFRecords and to work with images, videos, and webcam feeds.)
 # 步驟七、設定Anaconda 建好的虛擬環境之路徑，開該環境的terminal，輸入:  set PYTHONPATH=D:\Project\ObjectDetection\models;D:\Project\ObjectDetection\models\research;D:\Project\ObjectDetection\models\research\slim  。完成後，輸入 echo %PYTHONPATH%  確認。很重要要注意，每次重開terminal，都一定要再輸入這一長串，不然後面程式執行會有問題。
+#為了方便，我放了一個runpath.bat 檔於D:\Project\ObjectDetection\ 可於termianl下直接執行這個檔不用key 上面那串
 
 #### 2e. Configure PYTHONPATH environment variable
 A PYTHONPATH variable must be created that points to the \models, \models\research, and \models\research\slim directories. Do this by issuing the following commands (from any directory):
@@ -396,6 +397,8 @@ If everything has been set up correctly, TensorFlow will initialize the training
 Each step of training reports the loss. It will start high and get lower and lower as training progresses. For my training on the Faster-RCNN-Inception-V2 model, it started at about 3.0 and quickly dropped below 0.8. I recommend allowing your model to train until the loss consistently drops below 0.05, which will take about 40,000 steps, or about 2 hours (depending on how powerful your CPU and GPU are). Note: The loss numbers will be different if a different model is used. MobileNet-SSD starts with a loss of about 20, and should be trained until the loss is consistently under 2.
 
 You can view the progress of the training job by using TensorBoard. To do this, open a new instance of Anaconda Prompt, activate the tensorflow1 virtual environment, change to the C:\tensorflow1\models\research\object_detection directory, and issue the following command:
+# 步驟十八： 跑訓練資料的過程中，可以開tensorboard 來看看目前的結果：terminal於\object_detection下輸入這行指令：   tensorboard --logdir=data/ --host localhost --port 8088
+#然後到瀏覽器輸入http://localhost:8088
 ```
 (tensorflow1) C:\tensorflow1\models\research\object_detection>tensorboard --logdir=training
 ```
