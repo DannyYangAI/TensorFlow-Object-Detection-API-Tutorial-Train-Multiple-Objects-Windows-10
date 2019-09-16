@@ -51,7 +51,7 @@ Be sure to install [Anaconda](https://www.anaconda.com/distribution/#download-se
 
 Visit [TensorFlow's website](https://www.tensorflow.org/install) for further installation details, including how to install it on other operating systems (like Linux). The [object detection repository](https://github.com/tensorflow/models/tree/master/research/object_detection) itself also has [installation instructions](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md).
 
-# 步驟二、Anaconda 建一個虛擬環境，(python 3.5)
+# 步驟二、Anaconda 建一個虛擬環境，(python 3.6)
 
 ### 2. Set up TensorFlow Directory and Anaconda Virtual Environment
 The TensorFlow Object Detection API requires using the specific directory structure provided in its GitHub repository. It also requires several additional Python packages, specific additions to the PATH and PYTHONPATH variables, and a few extra setup commands to get everything set up to run or train an object detection model. 
@@ -114,7 +114,7 @@ If you want to train your own object detector, delete the following files (do no
 -	All files in \object_detection\inference_graph
 
 Now, you are ready to start from scratch in training your own object detector. This tutorial will assume that all the files listed above were deleted, and will go on to explain how to generate the files for your own training dataset.
-# 步驟七、於Anaconda 建好的虛擬環境。安裝tensorflow及其他包，全部從選單安裝，不必如作者所述用指令。先裝最新版tensorflow(或作者建議的1.13 版)，裝好後，再裝這幾個：pillow、 lxml、Cython、contextlib2、jupyter、matplotlib、pandas。不用裝 protobuf 可能會導致ERROR，因為裝tensorflow時就會自動裝了。安裝好後再確認tensorflow 是否有被降版，要在1.13上，不然後面會有錯誤
+# 步驟七、於Anaconda 建好的虛擬環境。安裝tensorflow-GPU及其他包，全部從選單安裝，不必如作者所述用指令。先裝最新版tensorflow(或作者建議的1.13 版)，裝好後，再裝這幾個：pillow、 lxml、Cython、contextlib2、jupyter、matplotlib、pandas。不用裝 protobuf 可能會導致ERROR，因為裝tensorflow時就會自動裝了。安裝好後再確認tensorflow 是否有被降版，要在1.13上，不然後面會有錯誤
 #### 2d. Set up new Anaconda virtual environment
 Next, we'll work on setting up a virtual environment in Anaconda for tensorflow-gpu. From the Start menu in Windows, search for the Anaconda Prompt utility, right click on it, and click “Run as Administrator”. If Windows asks you if you would like to allow it to make changes to your computer, click Yes.
 
