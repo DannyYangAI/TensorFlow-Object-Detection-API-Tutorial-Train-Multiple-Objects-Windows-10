@@ -149,7 +149,7 @@ Install the other necessary packages by issuing the following commands:
 ```
 (Note: The ‘pandas’ and ‘opencv-python’ packages are not needed by TensorFlow, but they are used in the Python scripts to generate TFRecords and to work with images, videos, and webcam feeds.)
 # 步驟七、設定Anaconda 建好的虛擬環境之路徑，開該環境的terminal，輸入:  set PYTHONPATH=D:\Project\ObjectDetection\models;D:\Project\ObjectDetection\models\research;D:\Project\ObjectDetection\models\research\slim  。完成後，輸入 echo %PYTHONPATH%  確認。很重要要注意，每次重開terminal，都一定要再輸入這一長串，不然後面程式執行會有問題。
-#為了方便，我放了一個runpath.bat 檔於D:\Project\ObjectDetection\ 可於termianl下直接執行這個檔不用key 上面那串
+# 為了方便，我放了一個runpath.bat 檔於D:\Project\ObjectDetection\ 可於termianl下直接執行這個檔不用key 上面那串
 
 #### 2e. Configure PYTHONPATH environment variable
 A PYTHONPATH variable must be created that points to the \models, \models\research, and \models\research\slim directories. Do this by issuing the following commands (from any directory):
