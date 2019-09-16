@@ -183,7 +183,7 @@ Finally, run the following commands from the C:\tensorflow1\models\research dire
 
 #### 2g. Test TensorFlow setup to verify it works
 The TensorFlow Object Detection API is now all set up to use pre-trained models for object detection, or to train a new one. You can test it out and verify your installation is working by launching the object_detection_tutorial.ipynb script with Jupyter. From the \object_detection directory, issue this command:
-# 步驟十：開啟object_detection/utils/visualization_utils.py ，註解lines 29 and 30 否則會有錯
+# 步驟十：開啟object_detection/utils/visualization_utils.py ，註解lines 29 and 30 否則會有錯(import matplotlib 註解)
 # 步驟十一、驗證是如都安裝好了，於termianl 視窗，於目錄\object_detection下貼上下面這二個指令執行jupyter notebook，跑裡面全部的程式碼，如果成功了，會看到框出物件的圖片
 ```
 (tensorflow1) C:\tensorflow1\models\research\object_detection> jupyter notebook object_detection_tutorial.ipynb
