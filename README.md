@@ -418,14 +418,11 @@ python export_inference_graph.py --input_type image_tensor --pipeline_config_pat
 ```
 This creates a frozen_inference_graph.pb file in the \object_detection\inference_graph folder. The .pb file contains the object detection classifier.
 
-# 關於tensorflow訓練完的模型檔案有數個，以下整理並說明
-```
---------------------------------------------------------------------
-frozen_inference_graph.pb  包括：1。圖形定義2.訓練參數。是一個無法再訓練的凍結圖，計算圖的定義和模型權重合併到同一個文件中
-
-save_model.pb 只有圖形定義。
-
---------------------------------------------------------------------
+# 關於tensorflow訓練完的模型檔案有數個，以下整理並說明：<br> 
+--------------------------------------------------------------------<br> 
+frozen_inference_graph.pb  包括：1。圖形定義2.訓練參數。是一個無法再訓練的凍結圖，計算圖的定義和模型權重合併到同一個文件中<br> 
+save_model.pb 只有圖形定義。<br> 
+--------------------------------------------------------------------<br> 
 model.ckpt.XXXXXXX 文件是在訓練期間生成的檢查點，用於恢復訓練或在訓練後出現問題時進行備份。如果已保存的模型和凍結的圖形，則可以忽略它。
 
 checkpoint   文件中記錄了(下面三個文件)的名稱,以及最近一次保存的文件,這裡我們並不需要
