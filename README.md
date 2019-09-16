@@ -114,7 +114,7 @@ If you want to train your own object detector, delete the following files (do no
 -	All files in \object_detection\inference_graph
 
 Now, you are ready to start from scratch in training your own object detector. This tutorial will assume that all the files listed above were deleted, and will go on to explain how to generate the files for your own training dataset.
-# 步驟七、於Anaconda 建好的虛擬環境。安裝tensorflow-GPU及其他包，全部從選單安裝，不必如作者所述用指令。先裝最新版tensorflow(或作者建議的1.13 版)，裝好後，再裝這幾個：pillow、 lxml、Cython、contextlib2、jupyter、matplotlib、pandas。不用裝 protobuf 可能會導致ERROR，因為裝tensorflow時就會自動裝了。安裝好後再確認tensorflow 是否有被降版，要在1.13上，不然後面會有錯誤
+# 步驟七、於Anaconda 建好的虛擬環境。安裝tensorflow-GPU及其他包，全部從選單安裝，不必如作者所述用指令。先裝最新版tensorflow(或作者建議的1.13 版)，裝好後，再裝這幾個：pillow、 lxml、Cython、contextlib2、jupyter、matplotlib、pandas、opencv。不用裝 protobuf 可能會導致ERROR，因為裝tensorflow時就會自動裝了。安裝好後再確認tensorflow 是否有被降版，要在1.13上，不然後面會有錯誤
 #### 2d. Set up new Anaconda virtual environment
 Next, we'll work on setting up a virtual environment in Anaconda for tensorflow-gpu. From the Start menu in Windows, search for the Anaconda Prompt utility, right click on it, and click “Run as Administrator”. If Windows asks you if you would like to allow it to make changes to your computer, click Yes.
 
@@ -412,15 +412,36 @@ The training routine periodically saves checkpoints about every five minutes. Yo
 
 ### 7. Export Inference Graph
 Now that training is complete, the last step is to generate the frozen inference graph (.pb file). From the \object_detection folder, issue the following command, where “XXXX” in “model.ckpt-XXXX” should be replaced with the highest-numbered .ckpt file in the training folder:
+# 步驟十九：取出推論模型：terminal 於 \object_detection 資料夾下輸入下面這串指令：
 ```
 python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/faster_rcnn_inception_v2_pets.config --trained_checkpoint_prefix training/model.ckpt-XXXX --output_directory inference_graph
 ```
 This creates a frozen_inference_graph.pb file in the \object_detection\inference_graph folder. The .pb file contains the object detection classifier.
 
+# 關於tensorflow訓練完的模型檔案有數個，以下整理並說明
+
+--------------------------------------------------------------------
+frozen_inference_graph.pb  包括：1。圖形定義2.訓練參數。是一個無法再訓練的凍結圖，計算圖的定義和模型權重合併到同一個文件中
+
+save_model.pb 只有圖形定義。
+
+--------------------------------------------------------------------
+model.ckpt.XXXXXXX 文件是在訓練期間生成的檢查點，用於恢復訓練或在訓練後出現問題時進行備份。如果已保存的模型和凍結的圖形，則可以忽略它。
+
+checkpoint   文件中記錄了(下面三個文件)的名稱,以及最近一次保存的文件,這裡我們並不需要
+model.ckpt.data-00000-of-00001  保存的模型數據
+model.ckpt.index	保存的模型數據
+model.ckpt.meta      模型定義的內容
+--------------------------------------------------------------------
+
+
 ### 8. Use Your Newly Trained Object Detection Classifier!
 The object detection classifier is all ready to go! I’ve written Python scripts to test it out on an image, video, or webcam feed.
 
 Before running the Python scripts, you need to modify the NUM_CLASSES variable in the script to equal the number of classes you want to detect. (For my Pinochle Card Detector, there are six cards I want to detect, so NUM_CLASSES = 6.)
+
+# 步驟二十：輸入一張測試圖，可得到物件偵測結果! 開啟作者寫好的測試程式：Object_detection_image.py ，這隻程式會去讀測試圖(預設為D:\Project\ObjectDetection\models\research\object_detection\test1.jpg), 直接執行 Object_detection_image.py即可
+
 
 To test your object detector, move a picture of the object or objects into the \object_detection folder, and change the IMAGE_NAME variable in the Object_detection_image.py to match the file name of the picture. Alternatively, you can use a video of the objects (using Object_detection_video.py), or just plug in a USB webcam and point it at the objects (using Object_detection_webcam.py).
 
