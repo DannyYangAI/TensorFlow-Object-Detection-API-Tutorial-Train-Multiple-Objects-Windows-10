@@ -279,6 +279,7 @@ def class_text_to_int(row_label):
         None
 ```
 Then, generate the TFRecord files by issuing these commands from the \object_detection folder:
+# 步驟十三，\object_detection下輸入以下這2行指令
 ```
 python generate_tfrecord.py --csv_input=images\train_labels.csv --image_dir=images\train --output_path=train.record
 python generate_tfrecord.py --csv_input=images\test_labels.csv --image_dir=images\test --output_path=test.record
@@ -347,7 +348,7 @@ Make the following changes to the faster_rcnn_inception_v2_pets.config file. Not
 
 - Line 9. Change num_classes to the number of different objects you want the classifier to detect. For the above basketball, shirt, and shoe detector, it would be num_classes : 3 .
 
-# 步驟十三，因為我有修改實作目錄，和作者的不一樣，所以下面檔案的路徑都要修改。 D:\Project\ObjectDetection\models\research\object_detection\training\faster_rcnn_inception_v2_pets.config ，用記事本開啟。C:/tensorflow1/ 全改成D:/roject/bjectDetection/ 。 要改那幾行請看下面作者講的
+# 步驟十四，因為我有修改實作目錄，和作者的不一樣，所以下面檔案的路徑都要修改。 D:\Project\ObjectDetection\models\research\object_detection\training\faster_rcnn_inception_v2_pets.config ，用記事本開啟。C:/tensorflow1/ 全改成D:/roject/bjectDetection/ 。 要改那幾行請看下面作者講的
 
 - Line 106. Change fine_tune_checkpoint to:
   - fine_tune_checkpoint : "C:/tensorflow1/models/research/object_detection/faster_rcnn_inception_v2_coco_2018_01_28/model.ckpt"
@@ -366,13 +367,13 @@ Save the file after the changes have been made. That’s it! The training job is
 
 ### 6. Run the Training
 **UPDATE 9/26/18:** 
-# 步驟十四： object_detection/legacy 下的 train.py 製到 /object_detection
+# 步驟十五： object_detection/legacy 下的 train.py 製到 /object_detection
 *As of version 1.9, TensorFlow has deprecated the "train.py" file and replaced it with "model_main.py" file. I haven't been able to get model_main.py to work correctly yet (I run in to errors related to pycocotools). Fortunately, the train.py file is still available in the /object_detection/legacy folder. Simply move train.py from /object_detection/legacy into the /object_detection folder and then continue following the steps below.*
 
 Here we go! From the \object_detection directory, issue the following command to begin training:
 
 
-# 步驟十五： 檔案faster_rcnn_inception_v2_pets.config內 下面這四行要刪掉，不然會發生錯誤
+# 步驟十六： 檔案faster_rcnn_inception_v2_pets.config內 下面這四行要刪掉，不然會發生錯誤
 
 		step: 0
             learning_rate: .0002
@@ -382,7 +383,7 @@ Here we go! From the \object_detection directory, issue the following command to
 補充：參考這個https://github.com/tensorflow/models/issues/3794     。要參考以下網址的設定，這資料夾才是最新的https://github.com/tensorflow/models/tree/master/research/object_detection/samples/configs
 
 
-# 步驟十六： \bject_detection下輸入以下這行指令就會開始跑訓練畫面了 。
+# 步驟十七： \object_detection下輸入以下這行指令就會開始跑訓練畫面了 。
 ```
 python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
 ```
