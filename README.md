@@ -522,13 +522,13 @@ Then, once inside the environment, install TensorFlow using CONDA rather than PI
 conda install tensorflow-gpu
 ```
 Then restart this guide from Step 2 (but you can skip the part where you install TensorFlow in Step 2d).
-#---------------------------------------------------------------------------------------------------------
-#多GPU
-#1開啟trian.py, 修改下面二行參數(2為2張GPU卡)：
+# ---------------------------------------------------------------------------------------------------------
+# 多GPU
+# 1開啟trian.py, 修改下面二行參數(2為2張GPU卡)：
 flags.DEFINE_integer('num_clones', 2, 'Number of clones to deploy per worker.')
 flags.DEFINE_integer('ps_tasks', 1,
                      'Number of parameter server tasks. If None, does not use '
                      'a parameter server.')
-#2開啟D:\Project\ObjectDetection\models\research\object_detection\training\faster_rcnn_inception_v2_pets.config
+# 2開啟D:\Project\ObjectDetection\models\research\object_detection\training\faster_rcnn_inception_v2_pets.config
   batch_size: 1 改成 batch_size: 2
 		     
