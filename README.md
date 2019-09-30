@@ -530,7 +530,8 @@ Then restart this guide from Step 2 (but you can skip the part where you install
 # 2開啟D:\Project\ObjectDetection\models\research\object_detection\training\faster_rcnn_inception_v2_pets.config  ，  batch_size: 1 改成 batch_size: 2
 
 # GPU 效能不佳解決方法
-https://www.jianshu.com/p/30301ecd6350
-https://stackoverflow.com/questions/47129397/tensorflow-object-detection-package-error-when-change-batch-size
+https://www.jianshu.com/p/30301ecd6350 三種方法解解批次只能為1
+https://stackoverflow.com/questions/47129397/tensorflow-object-detection-package-error-when-change-batch-size 修改批次
+https://towardsdatascience.com/measuring-actual-gpu-usage-for-deep-learning-training-e2bf3654bcfd  說明批次不可無限加大
 
 		     
