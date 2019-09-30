@@ -531,5 +531,6 @@ Then restart this guide from Step 2 (but you can skip the part where you install
 
 # GPU 效能不佳解決方法
 https://www.jianshu.com/p/30301ecd6350
+https://stackoverflow.com/questions/47129397/tensorflow-object-detection-package-error-when-change-batch-size
 
 		     
