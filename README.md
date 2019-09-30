@@ -529,7 +529,7 @@ Then restart this guide from Step 2 (but you can skip the part where you install
 ## flags.DEFINE_integer('ps_tasks', 1,'Number of parameter server tasks. If None, does not use ''a parameter server.')
 # 2開啟D:\Project\ObjectDetection\models\research\object_detection\training\faster_rcnn_inception_v2_pets.config  ，  batch_size: 1 改成 batch_size: 2
 
-#GPU 效能不佳解決方法
+# GPU 效能不佳解決方法
 https://www.jianshu.com/p/30301ecd6350
 
 		     
