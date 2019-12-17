@@ -534,4 +534,7 @@ https://www.jianshu.com/p/30301ecd6350 三種方法解解批次只能為1
 https://stackoverflow.com/questions/47129397/tensorflow-object-detection-package-error-when-change-batch-size 修改批次
 https://towardsdatascience.com/measuring-actual-gpu-usage-for-deep-learning-training-e2bf3654bcfd  說明批次不可無限加大
 
-		     
+# ubuntu 下 設定路徑 與 run training
+export PYTHONPATH="${PYTHONPATH}:/home/siquare01/project/ObjectDetection/models:/home/siquare01/project/ObjectDetection/models/research:/home/siquare01/project/ObjectDetection/models/research/slim"
+
+python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
