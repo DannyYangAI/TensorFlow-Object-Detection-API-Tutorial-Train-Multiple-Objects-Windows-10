@@ -538,3 +538,9 @@ https://towardsdatascience.com/measuring-actual-gpu-usage-for-deep-learning-trai
 export PYTHONPATH="${PYTHONPATH}:/home/siquare01/project/ObjectDetection/models:/home/siquare01/project/ObjectDetection/models/research:/home/siquare01/project/ObjectDetection/models/research/slim"
 
 python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
+
+# =======================================================================================================================
+（1）iteration：表示1次迭代（也叫training step），每次迭代更新1次網絡結構的參數；
+（2 ）batch-size：1次迭代所使用的樣本量；
+（3）epoch：1個epoch表示過了1遍訓練集中的所有樣本。
+定義10000次迭代為1個epoch，若每次迭代的batch-size設為256，那麼1個epoch相當於過了2560000個訓練樣本。
