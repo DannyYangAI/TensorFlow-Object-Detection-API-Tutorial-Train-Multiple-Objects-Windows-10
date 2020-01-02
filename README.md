@@ -538,6 +538,16 @@ https://towardsdatascience.com/measuring-actual-gpu-usage-for-deep-learning-trai
 export PYTHONPATH="${PYTHONPATH}:/home/siquare01/project/ObjectDetection/models:/home/siquare01/project/ObjectDetection/models/research:/home/siquare01/project/ObjectDetection/models/research/slim:/tmp"
 cd /home/siquare01/project/ObjectDetection/models/research/object_detection
 python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
+# ========
+    
+    export PYTHONPATH="${PYTHONPATH}:/home/danny/project/ObjectDetection/models:/home/danny/project/ObjectDetection/models/research:/home/danny/project/ObjectDetection/models/research/slim:/tmp" 
+    
+    cd /home/danny/project/ObjectDetection/models/research/object_detection 
+    
+    python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
+
+
+
 # 效能監控
 
     watch -n 0.1 nvidia-smi
