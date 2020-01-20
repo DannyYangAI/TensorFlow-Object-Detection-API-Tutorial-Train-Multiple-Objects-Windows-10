@@ -546,7 +546,16 @@ python train.py --logtostderr --train_dir=training/ --pipeline_config_path=train
     
     python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
 
+#=====================台灣杉指令
+cp /home/siquare01/project/ObjectDetection/models/research/object_detection/test.record /tmp
 
+cp /home/siquare01/project/ObjectDetection/models/research/object_detection/train.record /tmp
+
+export PYTHONPATH="${PYTHONPATH}:/home/siquare01/project/ObjectDetection/models:/home/siquare01/project/ObjectDetection/models/research:/home/siquare01/project/ObjectDetection/models/research/slim:/tmp" 
+
+cd /home/siquare01/project/ObjectDetection/models/research/object_detection 
+
+python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
 
 # 效能監控
 
