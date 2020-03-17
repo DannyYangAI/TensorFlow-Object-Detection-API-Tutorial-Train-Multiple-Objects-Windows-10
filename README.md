@@ -568,6 +568,8 @@ python train.py --logtostderr --train_dir=training/ --pipeline_config_path=train
     watch -n 0.1 nvidia-smi
 
     top -n 1000 -d 0.1
+    
+    C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.exe
 
 # =======================================================================================================================
 （1）iteration：表示1次迭代（也叫training step），每次迭代更新1次網絡結構的參數；
